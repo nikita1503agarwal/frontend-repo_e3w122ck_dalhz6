@@ -1,13 +1,22 @@
 import { Menu, PartyPopper } from "lucide-react";
+import { motion } from 'framer-motion'
 
 export default function Navbar() {
   return (
     <header className="relative z-20 w-full">
-      <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between"
+      >
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-400 to-lime-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 ring-1 ring-emerald-300/50">
+          <motion.div
+            whileHover={{ rotate: -6, scale: 1.03 }}
+            className="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-400 to-lime-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 ring-1 ring-emerald-300/50"
+          >
             <PartyPopper className="h-6 w-6 text-emerald-950" />
-          </div>
+          </motion.div>
           <div>
             <div className="text-lg font-extrabold tracking-tight text-emerald-100">NACOS FUTO</div>
             <div className="text-xs text-emerald-300/70">National Association of Computing Students</div>
@@ -30,7 +39,7 @@ export default function Navbar() {
         <button className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-400/10 ring-1 ring-emerald-300/30 text-emerald-100">
           <Menu className="h-6 w-6" />
         </button>
-      </div>
+      </motion.div>
     </header>
   );
 }
